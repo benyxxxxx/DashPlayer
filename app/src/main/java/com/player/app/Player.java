@@ -15,10 +15,10 @@ import com.google.android.exoplayer.util.Util;
 public class Player extends AppCompatActivity implements SurfaceHolder.Callback, View.OnClickListener,
                                                          DashPlayer.Listener {
     
-    private AspectRatioFrameLayout videoFrame;
-    private SurfaceView surfaceView;
-    private DashPlayer player;
-    private Uri contentUri;
+    private AspectRatioFrameLayout m_videoFrame;
+    private SurfaceView m_surfaceView;
+    private DashPlayer m_player;
+    private Uri m_contentUri;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +31,20 @@ public class Player extends AppCompatActivity implements SurfaceHolder.Callback,
         Button pauseButton = (Button)findViewById(R.id.button3);
         pauseButton.setOnClickListener(this);
         
-        videoFrame = (AspectRatioFrameLayout) findViewById(R.id.video_frame);
-        surfaceView = (SurfaceView) findViewById(R.id.surface_view);
-        surfaceView.getHolder().addCallback(this);
+        m_videoFrame = (AspectRatioFrameLayout) findViewById(R.id.video_frame);
+        m_surfaceView = (SurfaceView) findViewById(R.id.surface_view);
+        m_surfaceView.getHolder().addCallback(this);
     }
 
     public void onClick(View v) {
         switch(v.getId()) {
         case R.id.button2:
             // it was the playButton
-            player.start();
+            m_player.start();
             break;
         case R.id.button3:
             // it was the pauseButton
-            player.pause();
+            m_player.pause();
             break;
         }
     }
@@ -61,11 +61,11 @@ public class Player extends AppCompatActivity implements SurfaceHolder.Callback,
 
     private void onShown() {
         Intent intent = getIntent();
-        contentUri = intent.getData();
-        if (player == null) {
+        m_contentUri = intent.getData();
+        if (m_player == null) {
             preparePlayer();
         } else {
-            player.setBackgrounded(false);
+            m_player.setBackgrounded(false);
         }
     }
 
@@ -84,8 +84,8 @@ public class Player extends AppCompatActivity implements SurfaceHolder.Callback,
     
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        if (player != null) {
-            player.setSurface(holder.getSurface());
+        if (m_player != null) {
+            m_player.setSurface(holder.getSurface());
         }
     }
     
@@ -96,32 +96,32 @@ public class Player extends AppCompatActivity implements SurfaceHolder.Callback,
     
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        if (player != null) {
-            player.blockingClearSurface();
+        if (m_player != null) {
+            m_player.blockingClearSurface();
         }
     }
 
 
     private void preparePlayer() {
-        player = new DashPlayer(getApplicationContext(),  "DashPlayer", contentUri.toString());
-        player.addListener(this);
-        player.seekTo(0);
-        player.prepare();
-        player.setSurface(surfaceView.getHolder().getSurface());
-        player.start();
+        m_player = new DashPlayer(getApplicationContext(),  "DashPlayer", m_contentUri.toString());
+        m_player.addListener(this);
+        m_player.seekTo(0);
+        m_player.prepare();
+        m_player.setSurface(m_surfaceView.getHolder().getSurface());
+        m_player.start();
     }
     
     private void releasePlayer() {
-        if (player != null) {
-            player.release();
-            player = null;
+        if (m_player != null) {
+            m_player.release();
+            m_player = null;
         }
     }
 
     @Override
     public void onVideoSizeChanged(int width, int height, int unappliedRotationDegrees,
                                    float pixelWidthAspectRatio) {
-        videoFrame.setAspectRatio(
+        m_videoFrame.setAspectRatio(
                                   height == 0 ? 1 : (width * pixelWidthAspectRatio) / height);
     }
 

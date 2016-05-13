@@ -4,7 +4,7 @@ Exercise for CastLabs
 
 Contains:
 
-1. dashsdk: Android Library which is wrap around ExoPlayer. This is a short version of a standard DemoPlayer.java
+1. dashsdk: Android Library which is wrap around ExoPlayer. This is a short version of the ExoPlayer demo project (Can be shorten more if needed)
 
 
    Usage Example:
@@ -18,4 +18,6 @@ Contains:
 2. app: Android application which shows an example using dashsdk.
 
         There are 2 activities: MainActivity and Player.
+
+
 

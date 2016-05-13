@@ -8,20 +8,28 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="#88000000"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="1">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Select a video to play"
+            android:id="@+id/textView"/>
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="234dp"
             android:id="@+id/listView"
             android:layout_gravity="left|center_horizontal"
-            tools:listitem="@android:layout/simple_list_item_1"/>
+            tools:listitem="@android:layout/simple_list_item_1"
+            android:paddingTop="50dp"/>
 
     </LinearLayout>
-
 
 
 </FrameLayout>

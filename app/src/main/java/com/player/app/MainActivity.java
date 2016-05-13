@@ -13,36 +13,35 @@ import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
-    private ArrayAdapter<String> adapter;
-    private ArrayList<String> demoLinks;
-    private ArrayList<String> demoTitle;
+    private ArrayAdapter<String> m_adapter;
+    private ArrayList<String> m_demoLinks;
+    private ArrayList<String> m_demoTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         ListView listview = (ListView)findViewById(R.id.listView);
 
-        demoLinks = new ArrayList<String>();
-        demoTitle = new ArrayList<String>();
+        m_demoLinks = new ArrayList<String>();
+        m_demoTitle = new ArrayList<String>();
 
-        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, demoTitle);
+        m_adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, m_demoTitle);
 
-        listview.setAdapter(adapter);
+        listview.setAdapter(m_adapter);
 
 
-        demoLinks.add("http://demo.unified-streaming.com/video/smurfs/smurfs.ism/smurfs.mpd");
-        demoLinks.add("http://dash.edgesuite.net/envivio/dashpr/clear/Manifest.mpd");
-        demoTitle.add("Dash Video 1");
-        demoTitle.add("Dash Video 2");
+        m_demoLinks.add("http://demo.unified-streaming.com/video/smurfs/smurfs.ism/smurfs.mpd");
+        m_demoLinks.add("http://dash.edgesuite.net/envivio/dashpr/clear/Manifest.mpd");
+        m_demoTitle.add("Dash Video 1");
+        m_demoTitle.add("Dash Video 2");
 
         listview.setOnItemClickListener(new OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                 onClick(demoLinks.get(position));
+                 onClick(m_demoLinks.get(position));
                }
             });
     }
