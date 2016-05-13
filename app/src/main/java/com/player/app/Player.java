@@ -103,8 +103,7 @@ public class Player extends AppCompatActivity implements SurfaceHolder.Callback,
 
 
     private void preparePlayer() {
-        String userAgent = Util.getUserAgent(this, "DashPlayer");
-        player = new DashPlayer(getApplicationContext(), userAgent, contentUri.toString());
+        player = new DashPlayer(getApplicationContext(),  "DashPlayer", contentUri.toString());
         player.addListener(this);
         player.seekTo(0);
         player.prepare();
