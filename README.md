@@ -1,6 +1,6 @@
 # DashPlayer
 
-Exercise for CastLabs
+Android Exercise
 
 Contains:
 
